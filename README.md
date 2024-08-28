@@ -29,3 +29,57 @@ gantt
 
 
 ## 데이터베이스 모델링(ERD)
+```mermaid
+erDiagram
+    User ||--o{ BookReview : writes
+    User ||--o{ Comment : writes
+    User ||--o{ Like : gives
+    BookReview ||--o{ Comment : has
+    BookReview ||--o{ Like : receives
+    BookReview }o--|| Category : belongs_to
+    BookReview ||--o{ Image : contains
+
+    User {
+        int id PK
+        string username
+        string email
+        string password
+        datetime last_login
+    }
+    BookReview {
+        int id PK
+        string title
+        text content
+        datetime created_at
+        datetime updated_at
+        int author_id FK
+        int category_id FK
+        int main_image_id FK
+    }
+    Image {
+        int id PK
+        string file_path
+        string alt_text
+        int order
+        int review_id FK
+    }
+    Comment {
+        int id PK
+        text content
+        datetime created_at
+        int review_id FK
+        int user_id FK
+    }
+    Category {
+        int id PK
+        string name
+    }
+    Like {
+        int id PK
+        int user_id FK
+        int review_id FK
+        datetime created_at
+    }
+```
+## 화면 설계
+![booklog-화면설계](https://github.com/user-attachments/assets/f6c4606f-7a6f-453b-993b-edfdef71f87a)
