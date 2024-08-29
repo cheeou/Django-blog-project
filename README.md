@@ -1,7 +1,9 @@
 # 📚 ᗷOOKᒪOG
 ## 기술 스택
-## 프로젝트 목표
-## 주요 기능
+<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=Django&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=black"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=black"> 
+
+## 프로젝트 목표(작성중)
+## 주요 기능(작성중)
 ## 프로젝트 일정(WBS)
 
 ```mermaid
@@ -31,22 +33,22 @@ gantt
 ## 데이터베이스 모델링(ERD)
 ```mermaid
 erDiagram
-    User ||--o{ BookReview : writes
-    User ||--o{ Comment : writes
-    User ||--o{ Like : gives
-    BookReview ||--o{ Comment : has
-    BookReview ||--o{ Like : receives
-    BookReview }o--|| Category : belongs_to
-    BookReview ||--o{ Image : contains
+    User ||--o{ blog_post : writes
+    User ||--o{ comment : writes
+    User ||--o{ like : gives
+    blog_post ||--o{ Comment : has
+    blog_post ||--o{ Like : receives
+    blog_post }o--|| Category : belongs_to
+    blog_post ||--o{ Image : contains
 
-    User {
+    account_user {
         int id PK
         string username
         string email
         string password
         datetime last_login
     }
-    BookReview {
+    blog_post {
         int id PK
         string title
         text content
@@ -56,30 +58,30 @@ erDiagram
         int category_id FK
         int main_image_id FK
     }
-    Image {
+    blog_postImage {
         int id PK
         string file_path
         string alt_text
         int order
         int review_id FK
     }
-    Comment {
+    blog_postComment {
         int id PK
         text content
         datetime created_at
         int review_id FK
         int user_id FK
     }
-    Category {
+    blog_category {
         int id PK
         string name
     }
-    Like {
+    blog_postLike {
         int id PK
         int user_id FK
         int review_id FK
         datetime created_at
     }
 ```
-## 화면 설계
+## 화면 설계(작성중)
 ![booklog-화면설계](https://github.com/user-attachments/assets/f6c4606f-7a6f-453b-993b-edfdef71f87a)
