@@ -33,22 +33,22 @@ gantt
 ## 데이터베이스 모델링(ERD)
 ```mermaid
 erDiagram
-    User ||--o{ blog_post : writes
-    User ||--o{ comment : writes
-    User ||--o{ like : gives
-    blog_post ||--o{ Comment : has
-    blog_post ||--o{ Like : receives
-    blog_post }o--|| Category : belongs_to
-    blog_post ||--o{ Image : contains
+    account_User ||--o{ blog_Post : writes
+    account_User ||--o{ blog_PostComment : writes
+    account_User ||--o{ blog_PostLike : gives
+    blog_Post ||--o{ blog_PostComment : has
+    blog_Post ||--o{ blog_PostLike : receives
+    blog_Post }o--|| blog_PostCategory : belongs_to
+    blog_Post ||--o{ blog_PostImage : contains
 
-    account_user {
+    account_User {
         int id PK
         string username
         string email
         string password
         datetime last_login
     }
-    blog_post {
+    blog_Post {
         int id PK
         string title
         text content
@@ -58,25 +58,25 @@ erDiagram
         int category_id FK
         int main_image_id FK
     }
-    blog_postImage {
+    blog_PostImage {
         int id PK
         string file_path
         string alt_text
         int order
         int review_id FK
     }
-    blog_postComment {
+    blog_PostComment {
         int id PK
         text content
         datetime created_at
         int review_id FK
         int user_id FK
     }
-    blog_category {
+    blog_PostCategory {
         int id PK
         string name
     }
-    blog_postLike {
+    blog_PostLike {
         int id PK
         int user_id FK
         int review_id FK

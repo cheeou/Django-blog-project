@@ -17,16 +17,14 @@ def post_detail(request, post_id):  # 상세글
     return render(request, "blog/post_detail.html", {"post_detail": post_detail})
 
 
-def post_add(request):
+def post_add(request):  # 글작성
     if request.method == "POST":
         if "cancel" in request.POST:
             return redirect("blog:index")
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save()
-            return redirect(
-                "blog:post_detail", post_id=post.id
-            )  # 작성한 글의 상세 페이지로 리디렉션
+            return redirect("blog:post_detail", post_id=post.id)
     else:
         form = PostForm()
     return render(request, "blog/post_add.html", {"form": form})
