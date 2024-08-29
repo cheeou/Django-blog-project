@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Post, Comment
+from blog.models import Post
 
 
 def main(request):
