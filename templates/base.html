@@ -55,12 +55,21 @@
 							<span>Write</span>
 						</a>
 					</li>
+					{% if user.is_authenticated %}
 					<li>
-						<button class="button white">
-							<img src="{% static './assets/icon-logout.svg'%}" alt="" />
+						<a href="{% url 'accounts:logout' %}" class="button white">
+							<img src="{% static './assets/icon-logout.svg' %}" alt="Logout Icon" />
 							<span>Logout</span>
-						</button>
+						</a>
 					</li>
+					{% else %}
+					<li>
+						<a href="{% url 'accounts:login' %}" class="button gray">
+							<img src="./assets/icon-login.svg" alt="" />
+							<span>Login</span>
+						</a>
+					</li>
+					{% endif %}
 					<!-- //로그인 -->
 
 					<!-- 로그아웃 -->
