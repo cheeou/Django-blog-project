@@ -25,10 +25,13 @@
 				<!-- author -->
 				<dl class="author-wrap">
 					<dt class="a11y-hidden">Author</dt>
-					<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" /> Chilli</dd>
+					<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" />
+						{{ post_detail.author.nickname }}</dd>
 					<dt class="a11y-hidden">Created</dt>
 					<dd class="created">{{ post_detail.pub_date}}</dd>
+					{% if post_detail.modify_date %}
 					<dd>Last modified: {{ post_detail.modify_date }}</dd>
+					{% endif %}
 				</dl>
 				<!-- //author -->
 
