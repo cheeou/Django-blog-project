@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static '/css/post_delete.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="delete-confirm-container">
+    <div class="delete-confirm-box">
+        <h1>게시글 삭제</h1>
+        <p>정말로 "{{ post.postTitle }}" 게시글을 삭제하시겠습니까?</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="button-group">
+                <button type="submit" class="btn btn-danger">예, 삭제합니다</button>
+                <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-secondary">취소</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

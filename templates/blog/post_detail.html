@@ -1,69 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_css %}
-		<link rel="stylesheet" href="{% static '/css/wrapbox.css' %}" />
-		<link rel="stylesheet" href="{% static '/css/view.css' %}" />
+<link rel="stylesheet" href="{% static '/css/wrapbox.css' %}" />
+<link rel="stylesheet" href="{% static '/css/view.css' %}" />
 {% endblock %}
 
 
-        {% block content %}
-       
-		<!-- banner -->
-		<div class="banner" style="background-image:  url('{% static "images/post-background6.jpg" %}')">
-			<div class="max-width">
-				<div class="banner-contents">
-					<p class="today">May <em>25</em> Wednesday</p>
+{% block content %}
+
+<!-- banner -->
+<div class="banner" style="background-image:  url('{% static " images/post-background6.jpg" %}')">
+	<div class="max-width">
+		<div class="banner-contents">
+			<p class="today">May <em>25</em> Wednesday</p>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+
+<div class="view">
+	<div class="max-width">
+		<section class="wrap-box">
+			<div class="inner">
+				<!-- author -->
+				<dl class="author-wrap">
+					<dt class="a11y-hidden">Author</dt>
+					<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" /> Chilli</dd>
+					<dt class="a11y-hidden">Created</dt>
+					<dd class="created">{{ post_detail.pub_date}}</dd>
+					<dd>Last modified: {{ post_detail.modify_date }}</dd>
+				</dl>
+				<!-- //author -->
+
+				<!-- category -->
+				<dl class="category">
+					<dt class="a11y-hidden">Category</dt>
+					<dd>Life</dd>
+					<dd>Style</dd>
+				</dl>
+				<!-- //category -->
+				<div class="title-wrap">
+					<h2>{{ post_detail.postTitle }}</h2>
+					<button class="btn-like">Like</button>
 				</div>
+				<hr />
+				<div class="view-contents">
+					<p>
+						{{ post_detail.content }}
+					</p>
+				</div>
+				<div class="btn-group">
+					<a href="{% url 'blog:post_edit' post_detail.id %}" class="btn-modify">
+						<span class="a11y-hidden">modify</span>
+					</a>
+					<a href="{% url 'blog:post_delete' post_detail.id %}" class="btn-delete">
+						<span class="a11y-hidden">delete</span>
+					</a>
+				</div>
+				<a href="{% url 'main:main' %}" class="btn-back">
+					<span class="a11y-hidden">Back</span>
+				</a>
 			</div>
-		</div>
-		<!-- //banner -->
-
-		<!-- post view -->
-
-		<!-- //post view  -->
-		<div class="view">
-			<div class="max-width">				
-				<section class="wrap-box">
-					<div class="inner">
-						<!-- author -->
-						<dl class="author-wrap">
-							<dt class="a11y-hidden">Author</dt>
-							<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" /> Chilli</dd>
-							<dt class="a11y-hidden">Created</dt>
-							<dd class="created">{{ post_detail.pub_date}}</dd>
-						</dl>
-						<!-- //author -->
-
-						<!-- category -->
-						<dl class="category">
-							<dt class="a11y-hidden">Category</dt>
-							<dd>Life</dd>
-							<dd>Style</dd>
-						</dl>
-						<!-- //category -->
-						<div class="title-wrap">
-							<h2>{{ post_detail.postTitle }}</h2>
-							<button class="btn-like">Like</button>
-						</div>
-						<hr />
-						<div class="view-contents">
-							<p>
-								{{ post_detail.content }}
-							</p>
-						</div>
-						<div class="btn-group">
-							<a href="#" class="btn-modify">
-								<span class="a11y-hidden">modify</span>
-							</a>
-							<button type="button" class="btn-delete">
-								<span class="a11y-hidden">delete</span>
-							</button>
-						</div>
-						<a href="{% url 'main:main' %}" class="btn-back">
-							<span class="a11y-hidden">Back</span>
-						</a>
-					</div>
-				</section>
-			</div>
-		</div>
-	{% endblock %}
+		</section>
+	</div>
+</div>
+{% endblock %}
