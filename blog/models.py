@@ -1,9 +1,18 @@
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 from utils.validators import validate_post_title, validate_post_content
 
 
 class Post(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="posts",
+        verbose_name="작성자",
+        null=True,
+        blank=True,
+    )
     postTitle = models.CharField(
         "포스트 제목",
         max_length=50,

@@ -11,3 +11,20 @@ main>.max-width {
 		flex-direction: column;
 	}
 }
+
+.tab-buttons {
+	margin-bottom: 20px;
+}
+
+.tab-buttons a {
+	padding: 10px 20px;
+	background-color: #f0f0f0;
+	text-decoration: none;
+	color: black;
+	margin-right: 10px;
+}
+
+.tab-buttons a.active {
+	background-color: #007bff;
+	color: white;
+}

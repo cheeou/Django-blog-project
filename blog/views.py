@@ -1,19 +1,34 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.urls import reverse
 from blog.models import Post
 from blog.forms import PostForm
 
 
+@login_required
 def post_add(request):  # 글작성
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect("blog:post_detail", post_id=post.id)
     else:
         form = PostForm()
     return render(request, "blog/post_add.html", {"form": form})
+
+
+# def post_add(request):  # 글작성
+#     if request.method == "POST":
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save()
+#             return redirect("blog:post_detail", post_id=post.id)
+#     else:
+#         form = PostForm()
+#     return render(request, "blog/post_add.html", {"form": form})
 
 
 def post_detail(request, post_id):  # 상세글

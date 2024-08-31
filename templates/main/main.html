@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static '/css/about.css'%}" />
 <link rel="stylesheet" href="{% static '/css/post.css'%}" />
@@ -9,11 +8,13 @@
 {% endblock %}
 
 {% block content %}
-
 <main>
-	<!-- posts -->
 	<div class="max-width">
 		<h2 class="a11y-hidden">Post</h2>
+		<div class="tab-buttons">
+			<a href="?show_my_posts=false" class="{% if not show_my_posts %}active{% endif %}">전체 글 보기</a>
+			<a href="?show_my_posts=true" class="{% if show_my_posts %}active{% endif %}">내가 쓴 글 보기</a>
+		</div>
 		<ul class="posts">
 			{% for post in posts %}
 			<li>
@@ -34,19 +35,22 @@
 							<!-- author -->
 							<dl class="author-wrap">
 								<dt class="a11y-hidden">Author</dt>
-								<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" /> Chilli</dd>
+								<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" />
+									{{ post.author.nickname }}</dd>
 								<dt class="a11y-hidden">Created</dt>
 								<dd class="created">{{ post.pub_date }}</dd>
 							</dl>
 							<!-- //author -->
 
 							<p class="post-description">
-								{{ post.content }}
+								{{ post.content|truncatewords:30 }}
 							</p>
 						</div>
 					</article>
 				</a>
 			</li>
+			{% empty %}
+			<li>게시글이 없습니다.</li>
 			{% endfor %}
 		</ul>
 
