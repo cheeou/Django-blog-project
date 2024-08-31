@@ -10,15 +10,20 @@
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
 |----------|----------------------|----------------|-------------------------|-----------------------|
-| blog     | ‘/’                  | main           | blog/index.html         | 블로그 메인화면       |
-| blog     | ‘post/<int:post_id>’ | post_detail    | blog/post-view.html     | 블로그 글 상세보기     |
-| blog     | ‘post/add/’         | post_add       | blog/post_add.html      | 블로그 글 작성        |
+| index     | `/`                  | LoginView(Django module)           | main/index.html         | 블로그 초기화면       |
+| blog     |  `post/<int:post_id>` | post_detail    | blog/post-view.html     | 블로그 글 상세보기     |
+| blog     | `post/add/`         | post_add       | blog/post_add.html      | 블로그 글 작성            |
+| blog     | `post/<int:post_id>/`| post_detail   | blog/post_detail.html   | 블로그 글 상세보기         |
+| blog     | `post/edit/<int:post_id>/`| post_edit   | blog/post_edit.html   | 블로그 글 수정   |
+| blog     | `post/update/<int:post_id>/`| post_update   | blog/post_edit.html   | 블로그 글 수정 내용 업데이트  |
+| blog     | `post/delete/<int:post_id>/`| post_delete   | blog/post_confim_delete.html   | 블로그 글 삭제   |
+
 
 - accounts
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
 |----------|----------------------|----------------|-------------------------|-----------------------|
-| accounts | ‘login/’            | auth_views     | accounts/login.html      | 로그인 페이지         |
+| accounts | `accounts/login/`            | LoginView(Django module)     | accounts/login.html      | 로그인 페이지         |
 
 
 ## 프로젝트 일정(WBS)
