@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static '/css/wrapbox.css' %}" />
+<link rel="stylesheet" href="{% static '/css/view.css' %}" />
+<link rel="stylesheet" href="{% static '/css/signup.css' %}" />
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container my-3">
+    <div class="login-wrapper">
+        <p class="login-title">Sign Up</p>
+        <form method="post" action="{% url 'accounts:signup' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <div class="input-id">
+                <input type="text" class="form-control login-input-box" name="username" id="username"
+                    value="{{ form.username.value|default_if_none:'' }}" placeholder="Username">
+            </div>
+            <div class="input-nickname">
+                <input type="text" class="form-control login-input-box" name="nickname" id="nickname"
+                    value="{{ form.nickname.value|default_if_none:'' }}" placeholder="Nickname">
+            </div>
+            <div class="input-pw">
+                <input type="password" class="form-control login-input-box" name="password1" id="password1"
+                    value="{{ form.password1.value|default_if_none:'' }}" placeholder="Password">
+            </div>
+            <div class="input-pw">
+                <input type="password" class="form-control login-input-box" name="password2" id="password2"
+                    value="{{ form.password2.value|default_if_none:'' }}" placeholder="Confirm Password">
+            </div>
+            <div class="input-profile-image">
+                <label for="profile_image" class="form-label">Profile Image</label>
+                <input type="file" class="form-control" name="profile_image" id="profile_image">
+            </div>
+            <div class="btn-box">
+                <button type="submit" class="btn btn-primary login-btn">SIGN UP</button>
+            </div>
+        </form>
+        <a href="{% url 'accounts:login' %}" class="create-account">Already have an account? Login</a>
+        <a href="{% url 'main:main'%}" class="">Guest entry</a>
+    </div>
+</div>
+{% endblock %}
