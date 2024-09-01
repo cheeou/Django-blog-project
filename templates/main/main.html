@@ -5,16 +5,17 @@
 <link rel="stylesheet" href="{% static '/css/post.css'%}" />
 <link rel="stylesheet" href="{% static '/css/posts.css'%}" />
 <link rel="stylesheet" href="{% static '/css/main.css'%}" />
+<link rel="stylesheet" href="{% static '/css/pagenation.css'%}" />
 {% endblock %}
 
 {% block content %}
 <main>
+	<div class="tab-buttons">
+		<a href="?show_my_posts=false" class="{% if not show_my_posts %}active{% endif %}">전체 글 보기</a>
+		<a href="?show_my_posts=true" class="{% if show_my_posts %}active{% endif %}">내가 쓴 글 보기</a>
+	</div>
 	<div class="max-width">
 		<h2 class="a11y-hidden">Post</h2>
-		<div class="tab-buttons">
-			<a href="?show_my_posts=false" class="{% if not show_my_posts %}active{% endif %}">전체 글 보기</a>
-			<a href="?show_my_posts=true" class="{% if show_my_posts %}active{% endif %}">내가 쓴 글 보기</a>
-		</div>
 		<ul class="posts">
 			{% for post in posts %}
 			<li>
@@ -25,8 +26,7 @@
 							<!-- category -->
 							<dl class="category">
 								<dt class="a11y-hidden">Category</dt>
-								<dd>Life</dd>
-								<dd>Style</dd>
+								<dd>{{ post.category.name }}</dd>
 							</dl>
 							<!-- //category -->
 
@@ -35,7 +35,7 @@
 							<!-- author -->
 							<dl class="author-wrap">
 								<dt class="a11y-hidden">Author</dt>
-								<dd class="author"><img src="{% static './images/profile.jpg' %}" alt="" />
+								<dd class="author"><img src="{{ user_profile.profile_image.url }}" alt="" />
 									{{ post.author.nickname }}</dd>
 								<dt class="a11y-hidden">Created</dt>
 								<dd class="created">{{ post.pub_date }}</dd>
@@ -43,7 +43,7 @@
 							<!-- //author -->
 
 							<p class="post-description">
-								{{ post.content|truncatewords:30 }}
+								{{ post.content|truncatewords:20 }}
 							</p>
 						</div>
 					</article>
@@ -52,50 +52,59 @@
 			{% empty %}
 			<li>게시글이 없습니다.</li>
 			{% endfor %}
+
 		</ul>
 
-		<!-- Pagination Navigation -->
-		<div class="pagination">
-			<span class="step-links">
-				{% if posts.has_previous %}
-				<a href="?page=1{% if show_my_posts %}&show_my_posts=true{% endif %}">&laquo; first</a>
-				<a
-					href="?page={{ posts.previous_page_number }}{% if show_my_posts %}&show_my_posts=true{% endif %}">previous</a>
-				{% endif %}
 
-				<span class="current">
-					Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-				</span>
-
-				{% if posts.has_next %}
-				<a
-					href="?page={{ posts.next_page_number }}{% if show_my_posts %}&show_my_posts=true{% endif %}">next</a>
-				<a href="?page={{ posts.paginator.num_pages }}{% if show_my_posts %}&show_my_posts=true{% endif %}">last
-					&raquo;</a>
-				{% endif %}
-			</span>
-		</div>
-		<!-- about -->
 		<aside class="about">
 			<h2>About Me</h2>
-			<img src="{% static './images/profile.jpg' %}" alt="" class="user-profile" />
-			<p class="user-name">Chilli</p>
-			<p class="user-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-			<h3>Categories</h3>
+			{% if user.is_authenticated %}
+			{% if user_profile.profile_image %}
+			<img src="{{ user_profile.profile_image.url }}" alt="{{ user_profile.username }}'s profile"
+				class="user-profile" />
+			{% else %}
+			<img src="{% static './images/default_profile.jpg' %}" alt="Default profile" class="user-profile" />
+			{% endif %}
+			<div class="edit-profile"><a href="{% url 'accounts:edit_profile' %}">Edit profile</a></div>
+			<p class="user-name">{{ user_profile.nickname|default:user_profile.username }}</p>
+			<p class="user-description">{{ user_profile.bio|default:"No bio available" }}</p>
+			<h3>My Categories</h3>
 			<ul class="categories">
-				<li><a href="#">Life</a></li>
-				<li><a href="#">Style</a></li>
-				<li><a href="#">Tech</a></li>
-				<li><a href="#">Sport</a></li>
-				<li><a href="#">Photo</a></li>
-				<li><a href="#">Develop</a></li>
-				<li><a href="#">Music</a></li>
+				<li><a href="{% url 'main:main' %}?show_my_posts=true">All</a></li>
+				{% for category in user_categories %}
+				<li>
+					<a href="{% url 'main:main' %}?category={{ category.id }}&show_my_posts=true">
+						{{ category.name }} ({{ category.post_count }})
+					</a>
+				</li>
+				{% empty %}
+				<li>No categories found</li>
+				{% endfor %}
 			</ul>
+			{% else %}
+			<p>게스트 입장 중👥</p>
+			{% endif %}
 		</aside>
-		<!-- //about -->
+	</div>
+	<!-- Pagination Navigation -->
+	<div class="pagination">
+		<span class="step-links">
+			{% if posts.has_previous %}
+			<a href="?page=1{% if show_my_posts %}&show_my_posts=true{% endif %}">&laquo; first</a>
+			<a
+				href="?page={{ posts.previous_page_number }}{% if show_my_posts %}&show_my_posts=true{% endif %}">previous</a>
+			{% endif %}
+
+			<span class="current">
+				Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+			</span>
+
+			{% if posts.has_next %}
+			<a href="?page={{ posts.next_page_number }}{% if show_my_posts %}&show_my_posts=true{% endif %}">next</a>
+			<a href="?page={{ posts.paginator.num_pages }}{% if show_my_posts %}&show_my_posts=true{% endif %}">last
+				&raquo;</a>
+			{% endif %}
+		</span>
 	</div>
 </main>
 {% endblock %}
-
-<!-- //main -->
-<!-- footer -->

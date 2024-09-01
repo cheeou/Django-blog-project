@@ -3,6 +3,7 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static '/css/wrapbox.css' %}" />
 <link rel="stylesheet" href="{% static '/css/view.css' %}" />
+<link rel="stylesheet" href="{% static '/css/post.css' %}" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- jQuery를 먼저 로드 -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -13,20 +14,8 @@
 
 {% block content %}
 
-<!-- banner -->
-<div class="banner" style="background-image:  url('{% static " images/post-background6.jpg" %}')">
-	<div class="max-width">
-		<div class="banner-contents">
-			<p class="today">May <em>25</em> Wednesday</p>
-		</div>
-	</div>
-</div>
 
-<!-- //banner -->
 
-<!-- post view -->
-
-<!-- //post view  -->
 <div class="add">
 	<div class="max-width">
 		<section class="wrap-box post-add">
@@ -37,26 +26,26 @@
 						<form method="POST">
 							{% csrf_token %}
 							<div class="form-group">
-								<label for="form.postTitle">책제목<span class="require">*</span></label>
+								<label for="{{ form.postTitle.id_for_label }}">책제목<span class="require">*</span></label>
 								{{ form.postTitle }}
-								{% if form.postTitle.errors %}
-								<div class="alert alert-danger">
-									{% for error in form.postTitle.errors %}
-									<p>{{ error }}</p>
-									{% endfor %}
-								</div>
-								{% endif %}
 							</div>
 							<div class="form-group">
-								<label for="content">내용</label>
+								<label for="{{ form.content.id_for_label }}">내용</label>
 								{{ form.content }}
-								{% if form.content.errors %}
-								<div class="alert alert-danger">
-									{% for error in form.content.errors %}
-									<p>{{ error }}</p>
+							</div>
+							<div class="form-group">
+								{{ form.category.errors }}
+								<label>Category:</label>
+								<div class="category-options">
+									{% for radio in form.category %}
+									<div class="form-check">
+										{{ radio.tag }}
+										<label class="form-check-label" for="{{ radio.id_for_label }}">
+											{{ radio.choice_label }}
+										</label>
+									</div>
 									{% endfor %}
 								</div>
-								{% endif %}
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">Create</button>

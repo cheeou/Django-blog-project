@@ -7,17 +7,6 @@
 
 
 {% block content %}
-
-<!-- banner -->
-<div class="banner" style="background-image:  url('{% static " images/post-background6.jpg" %}')">
-	<div class="max-width">
-		<div class="banner-contents">
-			<p class="today">May <em>25</em> Wednesday</p>
-		</div>
-	</div>
-</div>
-<!-- //banner -->
-
 <div class="view">
 	<div class="max-width">
 		<section class="wrap-box">
@@ -38,14 +27,13 @@
 				<!-- category -->
 				<dl class="category">
 					<dt class="a11y-hidden">Category</dt>
-					<dd>Life</dd>
-					<dd>Style</dd>
+					<dd>{{ category.name }}</dd>
 				</dl>
 				<!-- //category -->
-				<div class="title-wrap">
+				<!-- <div class="title-wrap">
 					<h2>{{ post_detail.postTitle }}</h2>
 					<button class="btn-like">Like</button>
-				</div>
+				</div> -->
 				<hr />
 				<div class="view-contents">
 					<p>

@@ -3,6 +3,7 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static '/css/wrapbox.css' %}" />
 <link rel="stylesheet" href="{% static '/css/view.css' %}" />
+<link rel="stylesheet" href="{% static '/css/post.css' %}" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- jQuery를 먼저 로드 -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -13,36 +14,26 @@
 
 {% block content %}
 
-<!-- banner -->
-<div class="banner" style="background-image:  url('{% static " images/post-background6.jpg" %}')">
-	<div class="max-width">
-		<div class="banner-contents">
-			<p class="today">May <em>25</em> Wednesday</p>
-		</div>
-	</div>
-</div>
-
-<!-- //banner -->
 
 <div class="add">
 	<div class="max-width">
 		<section class="wrap-box post-add">
 			<div class="container">
 				<div class="row">
-					<div class="">
+					<div class="post-box">
 						<h1>글 작성</h1>
 						<form action="{% url 'blog:post_update' post.id %}" method="POST">
-                            {% csrf_token %}
-                            <label for="postTitle">제목</label>
-                            <input type="text" name="postTitle" id="postTitle" value="{{ post.postTitle }}">
-                            <br>
-                            <label for="content">내용</label>
-                            <textarea name="content" id="content" rows="10">{{ post.content }}</textarea>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-default">Cancel</a>
-                            </div>
-                        </form>
+							{% csrf_token %}
+							<label for="postTitle">제목:</label>
+							<input type="text" name="postTitle" id="postTitle" value="{{ post.postTitle }}">
+							<br>
+							<label for="content">내용:</label>
+							<textarea name="content" id="content" rows="5">{{ post.content }}</textarea>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Save</button>
+								<a href="{% url 'blog:post_detail' post.id %}" class="btn btn-default">Cancel</a>
+							</div>
+						</form>
 					</div>
 				</div>
 				<a href="{% url 'main:main' %}" class="btn-back">

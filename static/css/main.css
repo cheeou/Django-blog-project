@@ -3,7 +3,6 @@ main>.max-width {
 	flex-direction: row-reverse;
 	gap: 2.4rem;
 	position: relative;
-	margin-top: 10% !important;
 }
 
 @media (max-width: 1024px) {
@@ -14,17 +13,18 @@ main>.max-width {
 
 .tab-buttons {
 	margin-bottom: 20px;
+	margin-left: 50%;
 }
 
 .tab-buttons a {
 	padding: 10px 20px;
-	background-color: #f0f0f0;
+	background-color: #f3e6e7;
 	text-decoration: none;
 	color: black;
 	margin-right: 10px;
 }
 
 .tab-buttons a.active {
-	background-color: #007bff;
+	background-color: #aa4c4c;
 	color: white;
 }

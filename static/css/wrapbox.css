@@ -34,12 +34,19 @@
 
 /* view, write */
 .mypage .wrap-box,
-.view .wrap-box,
 .write .wrap-box {
 	width: 91.2rem;
 	max-width: 100%;
 	margin: -30rem 0 auto auto;
 	padding: 8rem;
+}
+
+.view .wrap-box {
+	width: 91.2rem;
+	max-width: 100%;
+	padding: 8rem;
+	margin-top: 5vh;
+	background-color: #f3efe7;
 }
 
 .view .wrap-box .inner,

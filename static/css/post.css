@@ -2,11 +2,11 @@
 	display: block;
 	overflow: hidden;
 	border-radius: var(--border-radius);
-	background: var(--white-color);
+	background: #F3EFE7;
 	font-size: 2rem;
 }
 
-.post article > img {
+.post article>img {
 	width: 100%;
 }
 
@@ -33,11 +33,11 @@
 }
 
 .contents-wrap .post-description {
-	height: calc(1.4rem * 1.4 * 3);
 	margin-top: 1.6rem;
 	color: var(--gray-color);
-	font-size: 1.4rem;
-	-webkit-line-clamp: 3;
+	font-size: 1.2rem;
+	line-height: 1.2;
+	-webkit-line-clamp: 2;
 	text-indent: 0.5em;
 }
 
@@ -46,8 +46,18 @@
 		height: auto;
 		-webkit-line-clamp: 1;
 	}
+
 	.contents-wrap .post-description {
 		height: auto;
 		-webkit-line-clamp: 2;
 	}
+}
+
+.wrap-box.postDetail {
+	margin: 0;
+}
+
+.add .max-width .wrap-box.post-add {
+	top: 200px;
+	background: #f3efe7;
 }

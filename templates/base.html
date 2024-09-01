@@ -41,56 +41,39 @@
 	<header>
 		<div class="max-width">
 			<h1>
-				<a href="{% url 'main:main' %}">
-					<img src="{% static './assets/booklog-logo.png'%}" alt="My Blog" />
-				</a>
+				<ul class="header-logo">
+					<li>
+						<a href="{% url 'main:main' %}">
+							<img src="{% static './assets/booklog-logo.png'%}" alt="My Blog" />
+						</a>
+					</li>
+					{% with current_path=request.path %}
+					{% if '/blog/post/add' not in current_path and '/blog/post/edit/' not in current_path %}
+					<li class="write-btn">
+						<a href="{% url 'blog:post_add' %}" class="button">
+							<span>✏️Write</span>
+						</a>
+					</li>
+					{% endif %}
+					{% endwith %}
+				</ul>
+
+
 			</h1>
 			<ul class="nav-login">
-				<!-- 로그인 -->
-				<li class="profile-img">
-					<a href="#">
-						<img src="{% static './assets/profile.jpg'%}" alt="My Page" />
-					</a>
-				</li>
-				<li>
-					<a href="{% url 'blog:post_add' %}" class="button">
-						<img src="{% static './assets/icon-modify-white.svg'%}" alt="" />
-						<span>Write</span>
-					</a>
-				</li>
 				{% if user.is_authenticated %}
 				<li>
 					<a href="{% url 'accounts:logout' %}" class="button white">
-						<img src="{% static './assets/icon-logout.svg' %}" alt="Logout Icon" />
 						<span>Logout</span>
 					</a>
 				</li>
 				{% else %}
 				<li>
 					<a href="{% url 'accounts:login' %}" class="button gray">
-						<img src="./assets/icon-login.svg" alt="" />
 						<span>Login</span>
 					</a>
 				</li>
 				{% endif %}
-				<!-- //로그인 -->
-
-				<!-- 로그아웃 -->
-				<!--
-					<li>
-						<a href="#" class="button gray">
-							<img src="./assets/icon-login.svg" alt="" />
-							<span>Login</span>
-						</a>
-					</li>
-					<li class="only-pc">
-						<a href="#" class="button gray">
-							<img src="./assets/icon-register.svg" alt="" />
-							<span>Register</span>
-						</a>
-					</li>
-          -->
-				<!--// 로그아웃 -->
 			</ul>
 		</div>
 	</header>

@@ -54,6 +54,7 @@ a {
 	border-radius: 0.8rem;
 	overflow: hidden;
 }
+
 img {
 	vertical-align: bottom;
 }
@@ -66,9 +67,7 @@ textarea:focus {
 	box-shadow: 0 0 0 1px var(--outline-border);
 }
 
-body {
-	background: var(--gray-background-light);
-}
+
 
 .a11y-hidden {
 	overflow: hidden;

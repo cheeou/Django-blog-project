@@ -7,8 +7,7 @@
 	padding: 0.2rem 1.2em 0;
 	border: 0;
 	border-radius: var(--border-radius);
-	background: var(--main-color);
-	color: var(--white-color);
+	color: #000000;
 	text-transform: uppercase;
 	font-weight: bold;
 	line-height: 1;
@@ -23,15 +22,19 @@
 .button.fullWidth {
 	width: 100%;
 }
+
 .button.gray {
-	background: var(--gray-background);
-	color: var(--black-color);
+	background: #000000;
+	color: #ffff;
 }
+
 .button.white {
 	padding: 0.2rem 0.8em 0;
-	background: var(--white-color);
-	color: var(--black-color);
+	background: #000000;
+	color: #ffff;
+	text-align: center;
 }
+
 .button.white img {
 	height: 1.4em;
 }
@@ -51,6 +54,7 @@
 	background: var(--white-color) url(../assets/icon-save.svg) no-repeat 2rem 50% / 1.6rem;
 	transition: all 0.3s;
 }
+
 .btn-save:hover {
 	background: var(--main-color) url(../assets/icon-save-white.svg) no-repeat 2rem 50% / 1.6rem;
 	color: var(--white-color);
@@ -74,11 +78,13 @@
 	background: var(--white-color) url(../assets/icon-like.svg) no-repeat 2.5rem 50% / 2.4rem;
 	transition: all 0.3s;
 }
+
 .btn-like:hover,
 .btn-like.active {
 	background: var(--red-color) url(../assets/icon-like-white.svg) no-repeat 2.5rem 50% / 2.4rem;
 	color: var(--white-color);
 }
+
 .btn-like:focus {
 	outline-color: rgba(var(--red-rgb), 0.2);
 	box-shadow: none;
@@ -92,10 +98,12 @@
 	border-radius: var(--border-radius);
 	transition: all 0.3s;
 }
+
 .btn-modify {
 	background: var(--gray-background) url(../assets/icon-modify.svg) no-repeat 50% 50% / 1.6rem;
 	right: 13rem;
 }
+
 .btn-modify:hover {
 	background: var(--main-color) url(../assets/icon-modify-white.svg) no-repeat 50% 50% / 1.6rem;
 }
