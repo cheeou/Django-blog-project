@@ -2,10 +2,33 @@
 ## 기술 스택
 <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=Django&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=black"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=black"> 
 
-## 프로젝트 목표(작성중)
-## 주요 기능(작성중)
+## 프로젝트 목표
+Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`, `보안 기능`, 그리고 웹사이트 구축에 필요한 `Django 라이브러리들`을 활용하여 실무적인 기술을 익히고 경험을 쌓는 것을 목표로 합니다.
+## 1. 주요 기능
+### 1.1. 사용자 인증 시스템
+- `django.contrib.auth`를 활용한 회원가입, 로그인 및 사용자 프로필 관리
+- Django의 내장 인증 시스템을 이용한 안전한 사용자 인증 처리
+
+   
+### 1.2. 게시글 관리
+- 게시글 작성, 수정, 삭제 기능
+- Django의 ORM을 활용한 카테고리별 게시글 분류 및 조회
+
+### 1.3. 게시글 네비게이션
+- Django의 `Paginator` 클래스를 사용한 효율적인 페이지네이션
+- `django-filter` 라이브러리를 활용한 카테고리 필터링 및 맞춤형 콘텐츠 접근
+
+
 
 ## URL 구조(모놀리식)
+-  main
+| App      | URL                  | View Function  | HTML File Name         | Note                  |
+|----------|----------------------|----------------|-------------------------|-----------------------|
+| index     | `/`                  | LoginView(Django module)           | main/index.html         | 블로그 초기화면       |
+| App      | URL                  | View Function  | HTML File Name         | Note                  |
+|----------|----------------------|----------------|-------------------------|-----------------------|
+| index     | `main/`                  | main           | main/main.html         | 블로그 메인화면      |
+
 - blog
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
@@ -23,7 +46,10 @@
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
 |----------|----------------------|----------------|-------------------------|-----------------------|
-| accounts | `accounts/login/`            | LoginView(Django module)     | accounts/login.html      | 로그인 페이지         |
+| accounts | `account/signup/`  | signup    | accounts/signup.html| 회원가입 페이지|
+| accounts | `accounts/login/`  | LoginView(Django module)     | accounts/login.html| 로그인 페이지|
+| accounts | `profile/edit`  | edit_profile     | accounts/profile.html| 회원가입 페이지|
+
 
 
 ## 프로젝트 일정(WBS)
