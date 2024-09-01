@@ -18,9 +18,12 @@
 
 
 .login-title {
-    font-size: 48px;
+    font-size: 100px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-family: "Just Me Again Down Here", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 form {

@@ -22,6 +22,10 @@
 	<link rel="stylesheet" href="{% static 'css/banner.css' %}">
 	<link rel="stylesheet" href="{% static 'css/category.css' %}">
 	<link rel="stylesheet" href="{% static 'css/author.css' %}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+
 
 	{% block extra_css %}{% endblock %}
 
@@ -48,7 +52,7 @@
 						</a>
 					</li>
 					{% with current_path=request.path %}
-					{% if '/blog/post/add' not in current_path and '/blog/post/edit/' not in current_path %}
+					{% if '/blog/post/add' not in current_path and '/blog/post/edit/' not in current_path and '/accounts/signup' not in current_path %}
 					<li class="write-btn">
 						<a href="{% url 'blog:post_add' %}" class="button">
 							<span>✏️Write</span>

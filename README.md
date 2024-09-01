@@ -1,6 +1,6 @@
 # 📚 ᗷOOKᒪOG
 ## 기술 스택
-<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=Django&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=black"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=black"> 
+<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=Django&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=black"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=black"> <img src="https://img.shields.io/badge/Figma-941711?style=flat-square&logo=Figma&logoColor=white"> 
 
 ## 프로젝트 목표
 Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`, `보안 기능`, 그리고 웹사이트 구축에 필요한 `Django 라이브러리들`을 활용하여 실무적인 기술을 익히고 경험을 쌓는 것을 목표로 합니다.
@@ -46,7 +46,7 @@ Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`,
 |----------|----------------------|----------------|-------------------------|-----------------------|
 | accounts | `account/signup/`  | signup    | accounts/signup.html| 회원가입 페이지|
 | accounts | `accounts/login/`  | LoginView(Django module)     | accounts/login.html| 로그인 페이지|
-| accounts | `profile/edit`  | edit_profile     | accounts/profile.html| 회원가입 페이지|
+| accounts | `profile/edit`  | edit_profile     | accounts/profile.html| 프로필 페이지|
 
 
 
@@ -59,75 +59,56 @@ gantt
     axisFormat %m/%d
     tickInterval 1day
     section 기획
-    화면설계    :active, 2024-08-26, 1d
-    ERD 작성    :active, 2024-08-26, 1d
-    환경세팅    :active, 2024-08-26, 1d
+    화면설계    :done, 2024-08-26, 1d
+    환경세팅    :done, 2024-08-26, 1d
+    화면설계 마무리       :done,    2024-08-27, 2d
+    ERD 작성          :done,    2024-08-27, 2d
     section 기능 개발
-    모델 및 기본 뷰 개발       :active,    2024-08-27, 1d
-    뷰 및 템플릿 개발          :active,    2024-08-28, 1d
-    사용자 인증 및 추가 기능   :active,  2024-08-29, 1d
-    section 화면 디자인 작업
-    스타일링 및 마무리         :         2024-08-30, 1d
-    section 최종 점검 및 테스트
-    테스트 및 최종 점검        :         2024-08-31, 1d
-    section 사이트 배포
-    AWS Lightsail 사이트 배포  :         2024-09-01, 1d
-   
+    모델 정의 및 기본 뷰 개발       :done,    2024-08-29, 1d
+    게시물 CRUD 기능   :done,  2024-08-29, 3d
+    사용자 인증 기능   :done,  2024-08-30, 2d
+    프로필 변경  페이지 :done         2024-09-01, 1d
+    CSS 수정 및 테스트 : done        2024-09-01, 1d
+
 ```
 
 
 ## 데이터베이스 모델링(ERD)
 ```mermaid
 erDiagram
-    account_User ||--o{ blog_Post : writes
-    account_User ||--o{ blog_PostComment : writes
-    account_User ||--o{ blog_PostLike : gives
-    blog_Post ||--o{ blog_PostComment : has
-    blog_Post ||--o{ blog_PostLike : receives
-    blog_Post }o--|| blog_PostCategory : belongs_to
-    blog_Post ||--o{ blog_PostImage : contains
+    User ||--o{ Post : writes
+    Post }o--|| PostCategory : belongs_to
 
-    account_User {
+    User {
         int id PK
         string username
-        string email
         string password
-        datetime last_login
+        string nickname
+        string profile_image
+        text   bio
     }
-    blog_Post {
+    Post {
         int id PK
-        string title
+        string postTitle
         text content
-        datetime created_at
-        datetime updated_at
+        datetime pub_date
+        datetime modify_date
         int author_id FK
         int category_id FK
-        int main_image_id FK
     }
-    blog_PostImage {
-        int id PK
-        string file_path
-        string alt_text
-        int order
-        int review_id FK
-    }
-    blog_PostComment {
-        int id PK
-        text content
-        datetime created_at
-        int review_id FK
-        int user_id FK
-    }
-    blog_PostCategory {
+
+    PostCategory {
         int id PK
         string name
     }
-    blog_PostLike {
-        int id PK
-        int user_id FK
-        int review_id FK
-        datetime created_at
-    }
+
 ```
-## 화면 설계(작성중)
-![booklog-화면설계](https://github.com/user-attachments/assets/f6c4606f-7a6f-453b-993b-edfdef71f87a)
+## 화면 설계 기획
+| 실행화면 | 상세설명 |
+|---------|-------------|
+| ![login_page](https://github.com/user-attachments/assets/598b7160-8b88-4abc-ab54-8a2a0d4b0566) | **초기 페이지**<br>- 로그인<br>- 회원가입 링크<br>- 게스트 입장 링크 |
+| ![create_account_page](https://github.com/user-attachments/assets/dd46d782-8a23-421c-b995-da609d0dcf16) | **회원가입 기능**<br> |
+| ![main-post_list](https://github.com/user-attachments/assets/500e17b0-037e-4f0b-b0ae-cbe4d1690572) | **블로그 메인화면**<br>- 게시글 네비게이션<br>- 게시글 목록<br>- 검색 기능 |
+| ![_post_detail (1)](https://github.com/user-attachments/assets/0ffdaa5f-8f2f-42bc-8b80-5401f7b491fc)| **게시글 보기**|
+| ![_post_write](https://github.com/user-attachments/assets/acbd7285-5556-4048-910d-e90c8265466e)| **게시글 작성**|
+

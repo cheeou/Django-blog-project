@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="{% static '/css/wrapbox.css' %}" />
 <link rel="stylesheet" href="{% static '/css/view.css' %}" />
 <link rel="stylesheet" href="{% static '/css/signup.css' %}" />
+
 {% endblock %}
 
 
 {% block content %}
 <div class="container my-3">
     <div class="login-wrapper">
-        <p class="login-title">Sign Up</p>
+        <p class="login-title">Create Account</p>
         <form method="post" action="{% url 'accounts:signup' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {% include "form_errors.html" %}
