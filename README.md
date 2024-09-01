@@ -22,18 +22,16 @@ Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`,
 
 ## URL 구조(모놀리식)
 -  main
+
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
 |----------|----------------------|----------------|-------------------------|-----------------------|
-| index     | `/`                  | LoginView(Django module)           | main/index.html         | 블로그 초기화면       |
-| App      | URL                  | View Function  | HTML File Name         | Note                  |
-|----------|----------------------|----------------|-------------------------|-----------------------|
-| index     | `main/`                  | main           | main/main.html         | 블로그 메인화면      |
+| main     | `/`                  | LoginView(Django module)   | main/index.html   | 블로그 초기화면 |
+| main     | `main/`              | main           | main/main.html         | 블로그 메인화면      |
 
 - blog
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
 |----------|----------------------|----------------|-------------------------|-----------------------|
-| index     | `/`                  | LoginView(Django module)           | main/index.html         | 블로그 초기화면       |
 | blog     |  `post/<int:post_id>` | post_detail    | blog/post-view.html     | 글 상세보기     |
 | blog     | `post/add/`         | post_add       | blog/post_add.html      | 글 작성            |
 | blog     | `post/<int:post_id>/`| post_detail   | blog/post_detail.html   | 글 상세보기         |
