@@ -24,9 +24,17 @@ def post_detail(request, post_id):  # 상세글
     post_detail = get_object_or_404(Post, pk=post_id)
     category = post_detail.category
 
+    # 작성자의 프로필 이미지 가져오기
+    author_profile_image = (
+        post_detail.author.profile_image
+        if hasattr(post_detail.author, "profile_image")
+        else None
+    )
+
     context = {
         "post_detail": post_detail,
         "category": category,
+        "author_profile_image": author_profile_image,
     }
 
     return render(request, "blog/post_detail.html", context)
