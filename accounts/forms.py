@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth import get_user_model
 from accounts.models import User
 
 
@@ -33,3 +34,41 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+User = get_user_model()
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["nickname", "profile_image", "bio"]
+
+        widgets = {
+            "nickname": forms.TextInput(attrs={"class": "form-control"}),
+            "profile_image": forms.FileInput(attrs={"class": "form-control-file"}),
+            "bio": forms.Textarea(attrs={"class": "form-control", "rows": 5}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].required = False
+
+    def clean_nickname(self):
+        nickname = self.cleaned_data.get("nickname")
+        if (
+            nickname
+            and User.objects.filter(nickname=nickname)
+            .exclude(pk=self.instance.pk)
+            .exists()
+        ):
+            raise forms.ValidationError("This nickname is already in use.")
+        return nickname
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].required = False
