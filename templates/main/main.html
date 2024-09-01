@@ -20,7 +20,7 @@
 			<li>
 				<a href="{% url 'blog:post_detail' post.id %}" class="post">
 					<article>
-						<img src="{% static './images/post-img6.jpg'%}" alt="" />
+						<img src="{% static './images/post-img6.jpg' %}" alt="" />
 						<div class="contents-wrap">
 							<!-- category -->
 							<dl class="category">
@@ -35,7 +35,7 @@
 							<!-- author -->
 							<dl class="author-wrap">
 								<dt class="a11y-hidden">Author</dt>
-								<dd class="author"><img src="{% static './images/profile.jpg'%}" alt="" />
+								<dd class="author"><img src="{% static './images/profile.jpg' %}" alt="" />
 									{{ post.author.nickname }}</dd>
 								<dt class="a11y-hidden">Created</dt>
 								<dd class="created">{{ post.pub_date }}</dd>
@@ -54,6 +54,27 @@
 			{% endfor %}
 		</ul>
 
+		<!-- Pagination Navigation -->
+		<div class="pagination">
+			<span class="step-links">
+				{% if posts.has_previous %}
+				<a href="?page=1{% if show_my_posts %}&show_my_posts=true{% endif %}">&laquo; first</a>
+				<a
+					href="?page={{ posts.previous_page_number }}{% if show_my_posts %}&show_my_posts=true{% endif %}">previous</a>
+				{% endif %}
+
+				<span class="current">
+					Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+				</span>
+
+				{% if posts.has_next %}
+				<a
+					href="?page={{ posts.next_page_number }}{% if show_my_posts %}&show_my_posts=true{% endif %}">next</a>
+				<a href="?page={{ posts.paginator.num_pages }}{% if show_my_posts %}&show_my_posts=true{% endif %}">last
+					&raquo;</a>
+				{% endif %}
+			</span>
+		</div>
 		<!-- about -->
 		<aside class="about">
 			<h2>About Me</h2>
