@@ -104,11 +104,17 @@ erDiagram
 
 ```
 ## 화면 설계 기획
-| 실행화면 | 상세설명 |
-|---------|-------------|
-| ![login_page](https://github.com/user-attachments/assets/598b7160-8b88-4abc-ab54-8a2a0d4b0566) | **초기 페이지**<br>- 로그인<br>- 회원가입 링크<br>- 게스트 입장 링크 |
-| ![create_account_page](https://github.com/user-attachments/assets/dd46d782-8a23-421c-b995-da609d0dcf16) | **회원가입 기능**<br> |
-| ![main-post_list](https://github.com/user-attachments/assets/500e17b0-037e-4f0b-b0ae-cbe4d1690572) | **블로그 메인화면**<br>- 게시글 네비게이션<br>- 게시글 목록<br>- 검색 기능 |
-| ![_post_detail (1)](https://github.com/user-attachments/assets/0ffdaa5f-8f2f-42bc-8b80-5401f7b491fc)| **게시글 보기**|
-| ![_post_write](https://github.com/user-attachments/assets/acbd7285-5556-4048-910d-e90c8265466e)| **게시글 작성**|
+![booklog-화면설계](https://github.com/user-attachments/assets/ba39b540-3ef1-462d-bd0a-44cafcd4589f)
+
+## 주요 기능 설명
+ 실행화면      | 기능 설명                 | 
+|----------|----------------------|
+| ![login](https://github.com/user-attachments/assets/597bb517-17a8-4f59-877d-9ac957d53b71) | 사이트 초기 진입페이지-회원 로그인  | 
+| ![게스트입장](https://github.com/user-attachments/assets/62da6124-58ee-4fab-ac5d-443a961bd01f) | 사이트 초기 진입페이지-게스트 입장  | 
+| ![회원가입-유효성검사](https://github.com/user-attachments/assets/3061305c-96b5-47f2-a398-f28f64e784ef) | 회원가입 - 유효성 검사  | 
+| ![내가쓴글](https://github.com/user-attachments/assets/5ce1347d-c6a3-41d8-83ba-ed589a472266) | 1. 내가 쓴 글보기 <br>2.카테고리별 글 목록 조회  | 
+| ![프로필편집](https://github.com/user-attachments/assets/c47da4a9-b12b-4614-9ded-a86dfd56d2d8)| 프로필 편집 기능  | 
+| ![페이징처리](https://github.com/user-attachments/assets/0fd37b1b-ce13-4051-8541-bbe102715858) | 게시글 페이징처리  | 
+| ![게시글상세 수정 삭제](https://github.com/user-attachments/assets/ce3a621e-f624-4f04-a7e8-8cd7f5172c86) | 게시글 보기&수정&삭제  | 
+
 
