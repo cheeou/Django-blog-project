@@ -32,9 +32,8 @@ Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`,
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
 |----------|----------------------|----------------|-------------------------|-----------------------|
-| blog     |  `post/<int:post_id>` | post_detail    | blog/post-view.html     | 글 상세보기     |
 | blog     | `post/add/`         | post_add       | blog/post_add.html      | 글 작성            |
-| blog     | `post/<int:post_id>/`| post_detail   | blog/post_detail.html   | 글 상세보기         |
+| blog     |  `post/<int:post_id>` | post_detail    | blog/post-view.html     | 글 상세보기     |
 | blog     | `post/edit/<int:post_id>/`| post_edit   | blog/post_edit.html   | 글 수정   |
 | blog     | `post/update/<int:post_id>/`| post_update   | blog/post_edit.html   | 글 수정 내용 저장  |
 | blog     | `post/delete/<int:post_id>/`| post_delete   | blog/post_confim_delete.html   | 글 삭제   |
@@ -103,7 +102,7 @@ erDiagram
     }
 
 ```
-## 화면 설계 기획
+## 화면 설계 기획(피그마)
 ![booklog-화면설계](https://github.com/user-attachments/assets/ba39b540-3ef1-462d-bd0a-44cafcd4589f)
 
 ## 주요 기능 설명
@@ -118,3 +117,16 @@ erDiagram
 | ![게시글상세 수정 삭제](https://github.com/user-attachments/assets/ce3a621e-f624-4f04-a7e8-8cd7f5172c86) | 게시글 보기&수정&삭제  | 
 
 
+
+## 프로젝트를 진행하며 느낀 점
+
+이전에 미니 프로젝트를 진행한 경험이 있었지만, 이번 프로젝트는 웹 프레임워크를 활용하여 기획부터 사이트의 전반적인 기능을 구현하는 큰 규모의 작업이다 보니 개인적으로 부담이 조금 느껴졌던 것 같습니다.
+
+- 개발 초기 어려움
+<br>웹 프레임워크의 전체적인 구조와 작업 순서에 대한 이해가 다소 부족하여 프로젝트 시작 후 처음 이틀 동안은 어디서부터 시작해야 할지 방향을 잡지 못하여 일정 관리에 차질이 생겨 아쉬움이 있었습니다.
+
+- 돌파구<br>
+기본적인 CRUD(Create, Read, Update, Delete) 기능 구현을 시작점으로 삼아 프로젝트에 진전을 이루기 시작했습니다.
+
+
+이번 프로젝트로 스스로 한계에 부딪히는 느낌이라 불안과 고통이 따르긴 했지만(?) 장고 웹프레임워크에 대해 이해하는 데 큰 도움이 되었습니다. 미흡하지만 하나의 서비스 결과물을 만들어 낼 수 있다는 것에 의의를 두며 더 공부를 열심히 해야겠다고 다짐하였습니다.
