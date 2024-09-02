@@ -20,7 +20,7 @@ Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`,
 
 
 
-## URL 구조(모놀리식)
+## 2. URL 구조(모놀리식)
 -  main
 
 | App      | URL                  | View Function  | HTML File Name         | Note                  |
@@ -49,7 +49,7 @@ Django의 핵심 기능인 `Admin 인터페이스`, `데이터베이스 관리`,
 
 
 
-## 프로젝트 일정(WBS)
+## 3. 프로젝트 일정(WBS)
 
 ```mermaid
 gantt
@@ -72,7 +72,7 @@ gantt
 ```
 
 
-## 데이터베이스 모델링(ERD)
+## 4. 데이터베이스 모델링(ERD)
 ```mermaid
 erDiagram
     User ||--o{ Post : writes
@@ -102,10 +102,10 @@ erDiagram
     }
 
 ```
-## 화면 설계 기획(피그마)
+## 5. 화면 설계 기획(피그마)
 ![booklog-화면설계](https://github.com/user-attachments/assets/ba39b540-3ef1-462d-bd0a-44cafcd4589f)
 
-## 주요 기능 설명
+## 6. 주요 기능 설명
  실행화면      | 기능 설명                 | 
 |----------|----------------------|
 | ![login](https://github.com/user-attachments/assets/597bb517-17a8-4f59-877d-9ac957d53b71) | 사이트 초기 진입페이지-회원 로그인  | 
@@ -118,7 +118,8 @@ erDiagram
 
 
 
-## 프로젝트를 진행하며 느낀 점
+## 7.마치며 
+### 프로젝트를 진행하며 느낀 점
 
 이전에 미니 프로젝트를 진행한 경험이 있었지만, 이번 프로젝트는 웹 프레임워크를 활용하여 기획부터 사이트의 전반적인 기능을 구현하는 큰 규모의 작업이다 보니 개인적으로 부담이 조금 느껴졌던 것 같습니다.
 
