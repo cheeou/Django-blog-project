@@ -29,7 +29,7 @@ class Post(models.Model):
     modify_date = models.DateTimeField("수정날짜", null=True, blank=True)
     content = models.TextField("포스트 내용", validators=[validate_post_content])
     category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True, related_name="posts"
+        Category, on_delete=models.SET_NULL, null=True, blank=True, related_name="posts"
     )
 
     def __str__(self):

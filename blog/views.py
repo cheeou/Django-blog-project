@@ -20,6 +20,22 @@ def post_add(request):  # 글작성
     return render(request, "blog/post_add.html", {"form": form})
 
 
+# @login_required
+# def post_add(request):  # 글작성
+#     if request.method == "POST":
+#         if "action" in request.POST and request.POST["action"] == "cancel":
+#             return redirect("blog:post_list")  # 또는 적절한 URL로 리다이렉트
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             post.save()
+#             return redirect("blog:post_detail", post_id=post.id)
+#     else:
+#         form = PostForm()
+#     return render(request, "blog/post_add.html", {"form": form})
+
+
 def post_detail(request, post_id):  # 상세글
     post_detail = get_object_or_404(Post, pk=post_id)
     category = post_detail.category
